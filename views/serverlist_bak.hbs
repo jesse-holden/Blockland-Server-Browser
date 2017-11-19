@@ -1,0 +1,20 @@
+<style>
+    table {
+        float: left;
+    }
+</style>
+<h1>{{title}}</h1>
+<p>Welcome to {{title}}</p>
+{{#if content}}
+    <h2>Numbers of servers: {{content.length}}</h2>
+    {{#each content}}
+        <table border="1" width="296" height="250" padding="5 px">
+            {{#each this}}
+                <tr>
+                    <th style="text-align: left; text-transform: uppercase;">{{@key}}</th>
+                    <td>{{this}}</td>
+                </tr>
+            {{/each}}
+        </table>
+    {{/each}}
+{{/if}}

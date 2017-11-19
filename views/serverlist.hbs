@@ -1,0 +1,47 @@
+<style>
+    article {
+        display: block;
+        background-color: #dff0d8;
+    }
+
+    aside {
+        float: left;
+        margin-right: 10px;
+    }
+</style>
+<h1><u>{{title}}</u></h1>
+{{#if errorMessage}}
+    <h2>Error</h2>
+    {{#with errorMessage}}
+        <ul>
+            {{#each this}}
+                <li>{{@key}}: {{this}}</li>
+            {{/each}}
+        </ul>
+    {{/with}}
+{{else}}
+    {{#if content}}
+        <h2>Numbers of servers: {{content.length}}</h2>
+        <h2>Total number of players: {{playerCount}}</h2>
+        {{#each content}}
+            {{#with this}}
+                {{#if passworded}}
+                    <article style="background-color: #f2dede">
+                {{else}}
+                    <article>
+                {{/if}}
+                    <h1><a href="blockland://join-{{ip}}_{{port}}">{{servername}}</a></h1>
+                    <aside>{{players}}/{{maxplayers}} Players</aside>
+                    <aside>{{brickcount}} Bricks</aside>
+                    <aside>{{mapname}}</aside>
+                {{#if passworded}}
+                        <aside style="color: red;">Passworded</aside>
+                {{/if}}
+                    <br/>
+                </article>
+            {{/with}}
+        {{/each}}
+    {{else}}
+            <h2>No servers</h2>
+    {{/if}}
+{{/if}}
